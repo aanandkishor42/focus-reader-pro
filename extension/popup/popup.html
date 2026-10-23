@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Reader Pro</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup" aria-labelledby="app-title">
+      <header class="topbar">
+        <div class="brand">
+          <img src="../icons/icon48.png" width="38" height="38" alt="" />
+          <div>
+            <h1 id="app-title">Focus Reader Pro</h1>
+            <p id="page-domain" class="domain">Checking page...</p>
+          </div>
+        </div>
+      </header>
+
+      <p id="page-title" class="page-title">Reading estimate</p>
+
+      <section class="metrics" aria-label="Current page reading estimate">
+        <div class="metric">
+          <span class="metric-label">Words</span>
+          <strong id="word-count" class="metric-value">—</strong>
+        </div>
+        <div class="metric">
+          <span class="metric-label">Reading time</span>
+          <strong id="reading-time" class="metric-value">—</strong>
+        </div>
+      </section>
+
+      <p id="page-warning" class="notice" role="status" hidden></p>
+
+      <section class="panel" aria-labelledby="focus-heading">
+        <div class="panel-head">
+          <div>
+            <h2 id="focus-heading">Focus Mode</h2>
+            <p class="panel-hint">
+              Shortcut: <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd>
+            </p>
+          </div>
+          <label class="switch">
+            <input
+              id="focus-toggle"
+              type="checkbox"
+              role="switch"
+              aria-label="Focus Mode"
+              disabled
+            />
+            <span class="switch-track" aria-hidden="true">
+              <span class="switch-thumb"></span>
+            </span>
+            <span id="focus-state" class="switch-text">Off</span>
+          </label>
+        </div>
+
+        <div class="control">
+          <div class="control-label">
+            <label for="font-size">Text size</label>
+            <output id="font-size-value" for="font-size">19 px</output>
+          </div>
+          <input id="font-size" type="range" min="16" max="28" step="1" value="19" />
+        </div>
+
+        <div class="control">
+          <div class="control-label">
+            <label for="line-width">Line width</label>
+            <output id="line-width-value" for="line-width">68 ch</output>
+          </div>
+          <input id="line-width" type="range" min="50" max="90" step="2" value="68" />
+        </div>
+      </section>
+
+      <section class="today" aria-labelledby="today-heading">
+        <div>
+          <h2 id="today-heading">Today</h2>
+          <p class="panel-hint">Logged reading on this device</p>
+        </div>
+        <div class="today-metrics">
+          <div class="today-stat">
+            <strong id="today-minutes">0 min</strong>
+            <span>reading</span>
+          </div>
+          <div class="today-stat">
+            <strong id="today-pages">0</strong>
+            <span>pages</span>
+          </div>
+        </div>
+      </section>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <footer class="footer">
+        <span id="logging-status" class="pill">Logging off</span>
+        <span id="api-status" class="pill" title="Checking the local API">API checking</span>
+        <button id="open-options" class="link-button" type="button">Settings</button>
+      </footer>
+    </main>
+
+    <script type="module" src="popup.js"></script>
+  </body>
+</html>

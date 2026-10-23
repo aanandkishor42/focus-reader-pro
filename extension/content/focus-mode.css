@@ -1,0 +1,127 @@
+/*
+ * Every rule is scoped to the class the content script controls, so pages are
+ * untouched until the user enables Focus Mode.
+ */
+html.focus-reader-active {
+  background: #0b0f14 !important;
+  color-scheme: dark !important;
+  overflow-x: hidden !important;
+}
+
+html.focus-reader-active body {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: auto !important;
+  min-height: 100vh !important;
+  max-width: var(--fr-line-width, 68ch) !important;
+  margin: 0 auto !important;
+  padding: clamp(2rem, 6vw, 5rem) 1.5rem 6rem !important;
+  background: #0b0f14 !important;
+  color: #e8edf3 !important;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif !important;
+  font-size: var(--fr-font-size, 19px) !important;
+  line-height: 1.75 !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+html.focus-reader-active body > * {
+  max-width: 100% !important;
+}
+
+html.focus-reader-active body :is(article, main, [role="main"], section) {
+  float: none !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+html.focus-reader-active
+  :is(
+    img,
+    picture,
+    video,
+    ins.adsbygoogle,
+    .adsbygoogle,
+    .ad,
+    .ads,
+    .advert,
+    .advertisement,
+    [class*="advert"],
+    [id*="advert"],
+    [class*="sponsor"],
+    nav,
+    footer,
+    aside,
+    [role="navigation"],
+    [role="contentinfo"],
+    [role="complementary"],
+    [class*="cookie-banner"],
+    [id*="cookie-banner"]
+  ) {
+  display: none !important;
+}
+
+html.focus-reader-active
+  :is(
+    iframe[src*="youtube"],
+    iframe[src*="youtu.be"],
+    iframe[src*="vimeo"],
+    iframe[src*="doubleclick"],
+    iframe[src*="googlesyndication"],
+    iframe[src*="adservice"]
+  ) {
+  display: none !important;
+}
+
+html.focus-reader-active
+  body
+  :is(
+    p,
+    li,
+    blockquote,
+    figcaption,
+    td,
+    th,
+    dd,
+    dt,
+    pre,
+    code,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+  ) {
+  color: #e8edf3 !important;
+  background-color: transparent !important;
+}
+
+html.focus-reader-active body :is(h1, h2, h3, h4) {
+  line-height: 1.25 !important;
+  margin-top: 1.5em !important;
+}
+
+html.focus-reader-active body a {
+  color: #8bdcff !important;
+  text-decoration-color: #8bdcff !important;
+}
+
+html.focus-reader-active body a:visited {
+  color: #c4b5fd !important;
+}
+
+html.focus-reader-active body :is(pre, code) {
+  background: #121a24 !important;
+  border-color: #2a3a4e !important;
+}
+
+html.focus-reader-active body :is(pre, table, blockquote) {
+  border-color: #2a3a4e !important;
+}
+
+html.focus-reader-active body ::selection {
+  background: #2dd4bf !important;
+  color: #061019 !important;
+}

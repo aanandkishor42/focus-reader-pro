@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "focus-reader-core"
+version = "0.4.0"
+description = "Local storage, API, and MCP tools for Focus Reader Pro"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["mcp>=1.30,<2"]
+
+[project.scripts]
+focus-reader-mcp = "mcp_server.server:main"
+
+[tool.setuptools.packages.find]
+where = ["core", "."]
+include = ["focus_reader_core*", "mcp_server*"]
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests", "core/tests", "mcp_server/tests"]
+pythonpath = ["core", "."]
+addopts = "-ra --strict-markers"
+
+[tool.coverage.run]
+branch = true
+source = ["core/focus_reader_core", "backend/app", "mcp_server"]
+omit = ["mcp_server/tests/*", "mcp_server/__main__.py"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true
+skip_covered = true
+exclude_lines = [
+  "pragma: no cover",
+  "if __name__ == .__main__.:",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["backend", "core", "mcp_server"]
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "SIM", "UP"]
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]

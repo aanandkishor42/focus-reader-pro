@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Focus Reader Pro Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <div class="brand">
+          <img src="../icons/icon48.png" width="46" height="46" alt="" />
+          <div>
+            <h1>Focus Reader Pro</h1>
+            <p>Reading settings</p>
+          </div>
+        </div>
+        <span class="badge">Local only</span>
+      </header>
+
+      <p class="lede">
+        Control what Focus Reader may store and where it should never run. Your
+        settings and reading history stay on this device.
+      </p>
+
+      <form id="settings-form" class="card">
+        <div class="card-heading">
+          <div>
+            <h2>Reading log</h2>
+            <p class="hint">
+              Logging is off by default. When enabled, the extension records the
+              page title, URL, domain, word count, estimated minutes, and time.
+            </p>
+          </div>
+        </div>
+
+        <label class="setting-row" for="logging-enabled">
+          <span class="setting-copy">
+            <span class="setting-title">Log reading history</span>
+            <span class="setting-description">
+              Opt in to local history. You can clear it at any time.
+            </span>
+          </span>
+          <span class="switch">
+            <input id="logging-enabled" type="checkbox" role="switch" />
+            <span class="switch-track" aria-hidden="true">
+              <span class="switch-thumb"></span>
+            </span>
+          </span>
+        </label>
+
+        <div class="field">
+          <label for="blocklist">Blocked domains</label>
+          <textarea
+            id="blocklist"
+            name="blocklist"
+            rows="6"
+            spellcheck="false"
+            aria-describedby="blocklist-help"
+            placeholder="bank.example&#10;mail.example"
+          ></textarea>
+          <p id="blocklist-help" class="hint">
+            One domain per line. A blocked domain also blocks its subdomains.
+            Lines may contain comments with <code>#</code>.
+          </p>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary-button" type="submit">Save settings</button>
+          <span id="save-status" class="status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+
+      <section class="card" aria-labelledby="appearance-heading">
+        <h2 id="appearance-heading">Focus appearance</h2>
+        <p class="hint">
+          Text size and line width are adjusted from the extension popup while
+          you read. Open the popup, then use the Focus Mode controls.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="data-heading">
+        <h2 id="data-heading">Your data</h2>
+        <p class="hint" id="data-note">
+          History is stored locally by the Focus Reader API. Clear it at any
+          time. Nothing is uploaded to a remote service.
+        </p>
+        <p id="api-status" class="status" role="status" aria-live="polite">
+          Checking local API...
+        </p>
+        <div class="button-row">
+          <button type="button" disabled title="Export arrives in a later phase.">
+            Export JSON
+          </button>
+          <button type="button" disabled title="Export arrives in a later phase.">
+            Export CSV
+          </button>
+          <button
+            id="clear-history"
+            type="button"
+            class="danger-button"
+            aria-describedby="data-note"
+            disabled
+          >
+            Clear all history
+          </button>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <p>Focus Reader Pro keeps reading data local unless you export it.</p>
+      </footer>
+    </main>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

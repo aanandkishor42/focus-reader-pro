@@ -1,0 +1,18 @@
+{
+  "name": "focus-reader-pro",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "description": "Chrome extension and local tooling for Focus Reader Pro.",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "node --check extension/background/service-worker.js && node --check extension/content/content-script.js && node --check extension/popup/popup.js && node --check extension/options/options.js && node --check extension/lib/api.js && node --check extension/lib/constants.js && node --check extension/lib/domain.js && node --check extension/lib/logging.js && node --check extension/lib/storage.js && node --check extension/lib/word-count.js"
+  },
+  "devDependencies": {
+    "vitest": "^5.0.5"
+  }
+}
